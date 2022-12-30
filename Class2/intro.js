@@ -27,3 +27,21 @@ while(count>0){
     console.log(count);
     count--;
 }
+
+let a = 20;
+let flag = 0;
+for (i=2;i<a;i++)
+{
+    if(a%2==0)
+    {
+        flag=flag+1;
+    }
+}
+if(flag ==0)
+{
+   console.log("no. is prime") 
+}
+else 
+{
+    console.log("no. is not prime")
+}
