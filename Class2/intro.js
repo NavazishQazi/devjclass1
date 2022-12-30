@@ -28,6 +28,8 @@ while(count>0){
     count--;
 }
 
+//prime no. code in js
+
 let a = 20;
 let flag = 0;
 for (i=2;i<a;i++)
