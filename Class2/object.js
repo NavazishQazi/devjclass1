@@ -12,3 +12,17 @@ let objAman = {
     Age : 22
 };
 console.log(objAman);
+
+let capIndore = {
+    Name : 'Navazish',
+    Age : 9999,
+    Friends :['Natasha','Thor','Tony','Salman','Shahrukh'],
+    address : {
+        city :"Queens",
+        state :"Haryana",
+    },
+    sayHi : function(){
+        console.log("cap Indore says hiiiii");
+    }
+}
+console.log(capIndore);
