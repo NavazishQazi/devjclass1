@@ -25,4 +25,25 @@ let capIndore = {
         console.log("cap Indore says hiiiii");
     }
 }
-console.log(capIndore);
+// whole object 
+
+// console.log(capIndore); 
+
+// name of capIndore
+console.log(capIndore.Name);
+
+// age of capIndore 
+console.log(capIndore.Age);
+
+// Friend of capIndore 
+console.log(capIndore.Friends);
+console.log(capIndore.Friends[0]);
+
+// address Object
+console.log(capIndore.address);
+console.log(capIndore.address.city);
+
+// call function Sayhii 
+capIndore.sayHi();
+
+
