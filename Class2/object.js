@@ -46,4 +46,21 @@ console.log(capIndore.address.city);
 // call function Sayhii 
 capIndore.sayHi();
 
+console.log("object before update : ",capIndore);
 
+// add a new key to object 
+capIndore.movies = ['Avengers','Civil War','Endgame'];
+console.log("object after update : ",capIndore);
+
+// delete a key 
+delete capIndore.movies;
+console.log(capIndore);
+
+// update a key 
+capIndore.address.state = 'New york'
+console.log(capIndore);
+
+// second method to access a key 
+
+console.log(capIndore.Name);
+console.log(capIndore['Name']);
