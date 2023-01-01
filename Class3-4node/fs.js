@@ -34,5 +34,8 @@ let folderPath = __dirname;
 let contentoffolder =fs.readdirSync(folderPath);
 console.log(contentoffolder);
 
-// delete a directory 
+// delete a empty directory 
 fs.rmdirSync("hamariDirectory");
+
+// delete a non-empty directory 
+fs.rmdirSync("hamariDirectory",{recursive : true});
