@@ -21,3 +21,18 @@ console.log(fs.readFileSync(filePath,"utf-8"));
 
 // D-delete 
 fs.unlinkSync(filePath);
+
+
+// Create a directory 
+
+if(!fs.existsSync("hamariDirectory"))
+    fs.mkdirSync("hamariDirectory");
+
+//  Read a directory 
+
+let folderPath = __dirname;
+let contentoffolder =fs.readdirSync(folderPath);
+console.log(contentoffolder);
+
+// delete a directory 
+fs.rmdirSync("hamariDirectory");
