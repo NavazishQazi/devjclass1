@@ -35,7 +35,16 @@ let contentoffolder =fs.readdirSync(folderPath);
 console.log(contentoffolder);
 
 // delete a empty directory 
-fs.rmdirSync("hamariDirectory");
+// fs.rmdirSync("hamariDirectory");
 
 // delete a non-empty directory 
-fs.rmdirSync("hamariDirectory",{recursive : true});
+// fs.rmdirSync("hamariDirectory",{recursive : true});
+
+// copy a file from one file to another
+
+let sourcePath = path.join(__dirname,"os.js")
+let destinationPath =path.join(__dirname,"module","os.js") 
+console.log(sourcePath);
+console.log(destinationPath);
+
+fs.copyFileSync(sourcePath,destinationPath);
