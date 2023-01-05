@@ -12,7 +12,7 @@ function cb(error, response, html) {
     else{
         const dom = new JSDOM(html);
         const document = dom.window.document;
-        let teamsName = document.querySelectorAll(".match-info.match-info-MATCH.match-info-MATCH-half-width .teams .name");
+        let teamsName = document.querySelectorAll(".ds-text-compact-xs");
         console.log(teamsName[0].textContent);
         console.log(teamsName[1].textContent);
     }
