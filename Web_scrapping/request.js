@@ -12,7 +12,7 @@ function cb(error,html) {
     // console.log('body:', html); // Print the HTML for the link page.
     const dom = new JSDOM(html);
     console.log(dom.window.document);
-    let teamName = document.querySelectorAll(".ds-w-full ds-bg-fill-content-prime ds-overflow-hidden")
+    let teamName = document.querySelectorAll("ds-w-full ds-bg-fill-content-prime ds-overflow-hidden")
     console.log(teamName[0].textContent);
     console.log(teamName[1].textContent);
     }
