@@ -23,23 +23,23 @@ function cb(error,response,html){
         }
     }
 }
-// function cb2(error,response,html){
-//     if(error){
-//         console.log(error);
-//     }else{
-//         const dom = new JSDOM(html);
-//         const document = dom.window.document;
-//         let batsmanRow = document.querySelectorAll(".table.batsman tbody tr")
-//         for(let i =0;i<batsmanRow<length;i++){
-//             let cell = batsmanRow[i].querySelectorAll("td");
-//             if(cell.length ==8){
-//                 let name = cell[0].textContent;
-//                 let runs =cell[2].textContent;
-//                 let balls = cell[3].textContent;
-//                 let fours = cell[5].textContent;
-//                 let sixes = cell[6].textContent;
-//                 // console.log("name: ",name,"runs: ",run,"balls: ",balls,"fours: ",fours,"sixes: ",sixes);
-//             }
+function cb2(error,response,html){
+    if(error){
+        console.log(error);
+    }else{
+        const dom = new JSDOM(html);
+        const document = dom.window.document;
+        let batsmanRow = document.querySelectorAll(".table.batsman tbody tr")
+        for(let i =0;i<batsmanRow<length;i++){
+            let cell = batsmanRow[i].querySelectorAll("td");
+            if(cell.length ==8){
+                let name = cell[0].textContent;
+                let runs =cell[2].textContent;
+                let balls = cell[3].textContent;
+                let fours = cell[5].textContent;
+                let sixes = cell[6].textContent;
+                // console.log("name: ",name,"runs: ",run,"balls: ",balls,"fours: ",fours,"sixes: ",sixes);
+            }
 
             processPlayer('Rohit','15','4','2','1');
             processPlayer('Virat','100','40','12','5');
@@ -75,7 +75,7 @@ function cb(error,response,html){
                 }
                 leaderboard.push(obj);
             }
-//        }
+       }
 
-//     }
-// }
+    }
+}
