@@ -15,9 +15,10 @@ function cb(error, response, html) {
     } else {
         const dom = new JSDOM(html);
         const document = dom.window.document;
-        let allScorecardTags = document.querySelectorAll("a[data-hover='Scorecard']");
-        // console.log(allScorecardTags.length);
+        let allScorecardTags = document.querySelectorAll(".ds-grow.ds-px-4.ds-border-r.ds-border-line-default-translucent");
+        // console.log(allScorecardTags);
         for (let i = 0; i < allScorecardTags.length; i++) {
+            
             let link = allScorecardTags[i].herf;
             let completeLink = "https://www.espncricinfo.com" + link;
             // console.log(completeLink);

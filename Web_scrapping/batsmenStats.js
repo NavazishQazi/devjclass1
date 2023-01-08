@@ -1,4 +1,21 @@
+let xlsx = require("json-as-xlsx");
+
+let data =
 [
+    {
+        sheet : "IPL 2022",
+        columns:
+        [
+            {label:"Name",value:"Name"},
+            {label:"Innings",value:"Innings"},
+            {label:"Runs",value:"Runs"},
+            {label:"Balls",value:"Balls"},
+            {label:"Fours",value:"Fours"},
+            {label:"Sixes",value:"Sixes"},
+        ],
+    
+
+content: [
     {
         "Name": "Jos Buttler ",
         "Innings": 7,
@@ -1288,3 +1305,11 @@
         "Sixes": 0
     }
 ]
+}
+]
+let settings = {
+    fileName: "MyIPLsheet", 
+    extraLength: 3, 
+    writeMode: "writeFile",
+}
+xlsx(data,settings);
