@@ -8,4 +8,10 @@ const puppeteer = require("puppeteer");
   
   let pagePromise = browserIntance.newPage();
   return pagePromise;
+}).then(function(page){
+    console.log("page is opend");
+    let urlPromise = page.goto('https://www.google.com/')
+    return urlPromise
+}).then(function(){
+    console.log("google is opened");
 })
