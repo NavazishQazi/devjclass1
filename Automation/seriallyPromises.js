@@ -8,6 +8,16 @@ f1kapromise.then(function(data){
     return f2kapromise;
 }).then(function(data){
     console.log(data+"");
-}).catch(function(error){
-    console.log(error);
+    let f3kapromise = fs.promises.readFile("f3.txt");
+    return f3kapromise;
+}).then(function(data){
+    console.log(data+"");
+    let f4kapromise = fs.promises.readFile("f4.txt");
+    return f4kapromise;
+}).then(function(data){
+    console.log(data+"");
+    let f5kapromise = fs.promises.readFile("f5.txt");
+    return f5kapromise;
+}).then(function(data){
+    console.log(data+"");
 })
