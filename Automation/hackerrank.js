@@ -78,7 +78,15 @@ browserPromise.then(function(browser){
 }).then(function(questionsArr){
     console.log(questionsArr);
     let questionPromise = questionSolver(questionsArr[0],code.answers[0]);
-
+    for(i=1;i<questionsArr.length;i++){
+      questionPromise = questionPromise.then(function(){
+        let nextquestionPromise = questionSolver(questionsArr[i],code.answers[i]);
+        return nextquestionPromise;
+      })
+    }
+    return questionPromise;
+}).then(function(){
+  console.log("all the warm up question has been submitted")
 })
 
 
@@ -130,10 +138,17 @@ function questionSolver(question,answer){
         let pressV = page.keyboard.press('V');
         return pressV;
       }).then(function(){
+        let upControl = page.keyboard.up('Control');
+        return upControl;
+      }).then(function(){
         let boardpromise = waitandclick('.ui-btn.ui-btn-normal.ui-btn-primary.pull-right.hr-monaco-submit.ui-btn-styled');
         return boardpromise;
       }).then(function(){
         console.log("Question submitted success");
+        resolve();
       })
+    }).catch(function(error){
+      console.log(error);
+      reject();
     })
 }
