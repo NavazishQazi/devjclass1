@@ -1,0 +1,43 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+input{
+    height: 3rem;
+    width: 27rem;
+    margin: 2rem;
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    background-color:lemonchiffon;
+    outline: none;
+    color:darkblue;
+}
+li{
+    min-height: 2.5rem;
+    width: 24rem;
+    justify-content: space-between;
+    background-color:darkgray;
+    border: 1px,solid black;
+    padding: 0.5rem;
+    margin: 0.25rem;
+    border-radius: 10px;
+    word-break: break-all;
+    font-size:1.25rem;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.delete{
+    color: red;
+}
