@@ -1,12 +1,35 @@
 let addbtn = document.querySelector(".addItem");
-let modal = document.querySelector(".modal-cont");
+let modalcont = document.querySelector(".modal-cont");
+let taskAreaCont = document.querySelector(".textarea");
+let maincont = document.querySelector(".main-cont");
 let addmodal = true;
+
 
 addbtn.addEventListener("click",function(){
     if(addmodal){
-        modal.style.display = "flex";
+        modalcont.style.display = "flex";
     }else{
-        modal.style.display ="none";
+        modalcont.style.display ="none";
     }
     addmodal=!addmodal;
 })
+
+modalcont.addEventListener("keydown",function(e){
+    let key =e.key;
+    if(key=='Enter'){
+        createticket(taskAreaCont.value)
+        taskAreaCont.value="";
+        modalcont.style.display ="none";
+        addmodal = !addmodal;
+    }
+})
+
+function createticket(task){
+    let ticketCont = document.createElement("div");
+    ticketCont.setAttribute('class','ticket-cont');
+    ticketCont.innerHTML=` <div class="ticket-cont">
+                            <div class="ticket-color"></div>
+                            <div class="ticket-id">#qzi110</div>
+                            <div class="task-area">${task}</div></div>`
+    maincont.appendChild(ticketCont);
+}
