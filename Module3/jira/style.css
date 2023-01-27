@@ -1,0 +1,119 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+.toolbox-cont{
+    height: 5rem; 
+    background-color: darkblue;
+    display: flex;
+    align-items: center;
+}
+.toolbox-priority-cont{
+    height: 3rem;
+    background-color: gray;
+    width: 18rem;
+    margin-left: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.action-btn-cont{
+    height: 3rem;
+    width: 10rem;
+    background-color: gray;
+    margin-left: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.color{
+    height: 1.5rem;
+    width: 3rem;
+    background-color: bisque;
+}
+
+.pink{
+    background-color:  lightpink;
+}
+.blue{
+    background-color:lightblue;
+}
+.green{
+    background-color: lightgreen;
+}
+.black{
+    background-color: black;
+}
+
+.addItem{
+    font-size: 1.5rem;
+}
+.delete{
+    font-size: 1.5rem;
+}
+
+.modal-cont{
+    height: 50vh;
+    width: 50vw;
+    display: none;
+    background-color: lightgrey;
+    margin-left: 25rem;
+    margin-top: 7rem;
+}
+.textarea{
+    outline: none;
+    resize: none;
+    border: none;
+    height: 100%;
+    width: 75%;
+    font-size: 2rem;
+    padding-left: 2rem;
+    background-color:rgb(175, 209, 243);
+}
+.priority-colour-cont{
+   height: 100%;
+   width: 25%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-around;
+   background-color: rgb(31, 84, 31);
+}
+
+.priority-color{
+    
+    height: 2rem;
+    width: 4rem;
+}
+
+.main-cont{
+   margin-top: 2rem;
+   display: flex;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
+   gap: 2rem;
+}
+.ticket-cont{
+    background-color: blueviolet;
+    height: 10rem;
+    width: 17rem;
+}
+.ticket-color{
+    height: 1rem;
+}
+.ticket-id{
+    height: 1.5rem;
+    background-color: indigo;
+    padding-left:0.5rem ;
+    padding-top: 0.15rem;
+}
+.task-area{
+    height: calc(100%-1rem-1.5rem);
+    padding: 5px; 
+    font-size: 1.25rem;
+}
