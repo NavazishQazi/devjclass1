@@ -92,6 +92,9 @@ body{
     height: 2rem;
     width: 4rem;
 }
+.Active{
+    border: 4px solid wheat;
+}
 
 .main-cont{
    margin-top: 2rem;
