@@ -3,8 +3,11 @@ let modalcont = document.querySelector(".modal-cont");
 let taskAreaCont = document.querySelector(".textarea");
 let maincont = document.querySelector(".main-cont");
 let allPriorityColors = document.querySelectorAll(".priority-color");
+let removebtn = document.querySelector(".delete")
 let addmodal = true;
-let modalPriorityColor ="black"
+let removeflag = false;
+let modalPriorityColor ="black";
+
 
 
 addbtn.addEventListener("click",function(){
@@ -27,6 +30,15 @@ for(let i=0;i<allPriorityColors.length;i++){
     })
 }
 
+removebtn.addEventListener("click",function(){
+    if(removeflag){
+        removebtn.style.color ='black'
+    }else{
+        removebtn.style.color ='red'
+    }
+    removeflag = !removeflag;
+})
+
 modalcont.addEventListener("keydown",function(e){
     let key =e.key;
     if(key=='Enter'){
@@ -45,4 +57,8 @@ function createticket(ticketColor,task){
                             <div class="ticket-id">#qzi110</div>
                             <div class="task-area">${task}</div></div>`
     maincont.appendChild(ticketCont);
+    ticketCont.addEventListener("click",function(){
+        if (removeflag)
+        ticketCont.remove();
+    })
 }
