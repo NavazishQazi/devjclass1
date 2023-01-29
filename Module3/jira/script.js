@@ -4,11 +4,51 @@ let taskAreaCont = document.querySelector(".textarea");
 let maincont = document.querySelector(".main-cont");
 let allPriorityColors = document.querySelectorAll(".priority-color");
 let removebtn = document.querySelector(".delete")
+let toolboxcolors = document.querySelectorAll(".color")
 let addmodal = true;
 let removeflag = false;
 let colors = ['pink','blue','green','black'];
 let modalPriorityColor = colors[colors.length-1];
 var uid = new ShortUniqueId();
+
+let ticketArr =[];
+
+
+for(let i=0;i<toolboxcolors.length;i++){
+    toolboxcolors[i].addEventListener("click",function(){
+        let currentColor = toolboxcolors[i].classList[1];
+        let filteredArr = [];
+        for(let i=0;i<ticketArr.length;i++){
+            if(ticketArr[i].color==currentColor){
+                filteredArr.push(ticketArr[i])
+            }
+        }
+       let allTickets = document.querySelectorAll(".ticket-cont");
+       for(let j=0;j<allTickets.length;j++){
+        allTickets[j].remove();
+       }
+       for(let i=0;i<filteredArr.length;i++){
+        let ticket = filteredArr[i];
+        let color = ticket.color;
+        let task = ticket.task;
+        let id = ticket.id;
+        createticket(color,task,id)
+       }
+    })
+    toolboxcolors[i].addEventListener("dblclick",function(){
+        let allTickets = document.querySelectorAll(".ticket-cont");
+       for(let j=0;j<allTickets.length;j++){
+        allTickets[j].remove();
+       }
+       for(let i=0;i<ticketArr.length;i++){
+        let ticket = ticketArr[i];
+        let color = ticket.color;
+        let task = ticket.task;
+        let id = ticket.id;
+        createticket(color,task,id)
+       }
+    })
+}
 
 
 
@@ -52,12 +92,20 @@ modalcont.addEventListener("keydown",function(e){
     }
 })
 
-function createticket(ticketColor,task){
+// create new tickets 
+
+function createticket(ticketColor,task,ticketid){
+    let id;
+    if(ticketid ==undefined){
+        id =uid();
+    }else{
+        id = ticketid;
+    }
     let ticketCont = document.createElement("div");
     ticketCont.setAttribute('class','ticket-cont');
     ticketCont.innerHTML=` <div class="ticket-cont">
                             <div class="ticket-color ${ticketColor}"></div>
-                            <div class="ticket-id">#${uid()}</div>
+                            <div class="ticket-id">#${id}</div>
                             <div class="task-area">${task}</div>
                             <div class = "Lock-unlock"> <i class="fa fa-lock"></i></div>
                             </div>`
@@ -102,4 +150,8 @@ function createticket(ticketColor,task){
         ticketColorBand.classList.remove(currentTicketColor);
         ticketColorBand.classList.add(nextColor); 
     })
+    if(ticketid == undefined){
+        ticketArr.push({"color":ticketColor,"task":task,"id":"#"+id})
+        console.log(ticketArr);
+    }
 }
