@@ -6,7 +6,10 @@ let allPriorityColors = document.querySelectorAll(".priority-color");
 let removebtn = document.querySelector(".delete")
 let addmodal = true;
 let removeflag = false;
-let modalPriorityColor ="black";
+let colors = ['pink','blue','green','black'];
+let modalPriorityColor = colors[colors.length-1];
+var uid = new ShortUniqueId();
+
 
 
 
@@ -54,11 +57,49 @@ function createticket(ticketColor,task){
     ticketCont.setAttribute('class','ticket-cont');
     ticketCont.innerHTML=` <div class="ticket-cont">
                             <div class="ticket-color ${ticketColor}"></div>
-                            <div class="ticket-id">#qzi110</div>
-                            <div class="task-area">${task}</div></div>`
+                            <div class="ticket-id">#${uid()}</div>
+                            <div class="task-area">${task}</div>
+                            <div class = "Lock-unlock"> <i class="fa fa-lock"></i></div>
+                            </div>`
     maincont.appendChild(ticketCont);
+
+    // lock unlock handle 
+
+    let lockunlockbtn = ticketCont.querySelector(".Lock-unlock i");
+    let ticketTaskArea =ticketCont.querySelector(".task-area");
+    lockunlockbtn.addEventListener("click",function(){
+        if(lockunlockbtn.classList.contains("fa-lock")){
+            lockunlockbtn.classList.remove("fa-lock");
+            lockunlockbtn.classList.add("fa-unlock")
+            ticketTaskArea.setAttribute("contenteditable","true");
+        }else{
+            lockunlockbtn.classList.remove("fa-unlock")
+            lockunlockbtn.classList.add("fa-lock")
+            ticketTaskArea.setAttribute("contenteditable","false");
+        }
+    })
+
+    // handling delete 
     ticketCont.addEventListener("click",function(){
         if (removeflag)
         ticketCont.remove();
+    })
+
+    // handle color 
+
+    let ticketColorBand = ticketCont.querySelector(".ticket-color");
+    ticketColorBand.addEventListener("click",function(){
+        let currentTicketColor = ticketColorBand.classList[1];
+        let currentTicketColorIdx= -1;
+        for(let i=0;i<colors.length;i++){
+          if(currentTicketColor==colors[i]){
+            currentTicketColorIdx = i;
+            break;
+          }
+        }
+        let nextColorIdx = (currentTicketColorIdx+1)%colors.length;
+        let nextColor = colors[nextColorIdx];
+        ticketColorBand.classList.remove(currentTicketColor);
+        ticketColorBand.classList.add(nextColor); 
     })
 }

@@ -124,11 +124,22 @@ body{
 .ticket-id{
     height: 1.5rem;
     background-color:#E6DDC4;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: rgb(117, 114, 114);
     padding-left:0.5rem ;
     padding-top: 0.15rem;
 }
 .task-area{
-    height: calc(100%-1rem-1.5rem);
+    height: 6rem;
     padding: 5px; 
     font-size: 1.25rem;
+    overflow: auto;
+    outline:none;
+    word-break: break-all;
+}
+
+.Lock-unlock{
+    font-size: 1.5rem;
+    margin-left: 16.5rem;   
 }
