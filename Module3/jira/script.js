@@ -13,6 +13,15 @@ var uid = new ShortUniqueId();
 
 let ticketArr =[];
 
+if(localStorage.getItem("tickets")){
+    let str = localStorage.getItem("tickets");
+    let arr = JSON.parse(str);
+    ticketArr = arr;
+    for(let i=0;i<arr.length;i++){
+        let ticketObj = arr[i];
+        createticket(ticketObj.color,ticketObj.task,ticketObj.id);
+    }
+}
 
 for(let i=0;i<toolboxcolors.length;i++){
     toolboxcolors[i].addEventListener("click",function(){
@@ -23,6 +32,7 @@ for(let i=0;i<toolboxcolors.length;i++){
                 filteredArr.push(ticketArr[i])
             }
         }
+
        let allTickets = document.querySelectorAll(".ticket-cont");
        for(let j=0;j<allTickets.length;j++){
         allTickets[j].remove();
@@ -35,6 +45,7 @@ for(let i=0;i<toolboxcolors.length;i++){
         createticket(color,task,id)
        }
     })
+
     toolboxcolors[i].addEventListener("dblclick",function(){
         let allTickets = document.querySelectorAll(".ticket-cont");
        for(let j=0;j<allTickets.length;j++){
@@ -52,11 +63,12 @@ for(let i=0;i<toolboxcolors.length;i++){
 
 
 
-
 addbtn.addEventListener("click",function(){
     if(addmodal){
+        // show model 
         modalcont.style.display = "flex";
     }else{
+        // hide model 
         modalcont.style.display ="none";
     }
     addmodal=!addmodal;
@@ -125,12 +137,22 @@ function createticket(ticketColor,task,ticketid){
             lockunlockbtn.classList.add("fa-lock")
             ticketTaskArea.setAttribute("contenteditable","false");
         }
+          // update text 
+          let ticketid = getTicketIdx(id);
+          ticketArr[ticketid].task = ticketTaskArea.textContent;
+          updateLocalStorage();
     })
 
     // handling delete 
     ticketCont.addEventListener("click",function(){
         if (removeflag)
+        // delete from ui 
         ticketCont.remove();
+
+        // Delete from ticketArr 
+        let ticketIdx = getTicketIdx(id);
+        ticketArr.splice(ticketIdx,1);
+        updateLocalStorage();
     })
 
     // handle color 
@@ -149,9 +171,31 @@ function createticket(ticketColor,task,ticketid){
         let nextColor = colors[nextColorIdx];
         ticketColorBand.classList.remove(currentTicketColor);
         ticketColorBand.classList.add(nextColor); 
+
+        // update ticketArr as well 
+        let ticketIdx = getTicketIdx(id);
+         ticketArr[ticketIdx].color = nextColor;
+         updateLocalStorage();
+  
     })
     if(ticketid == undefined){
-        ticketArr.push({"color":ticketColor,"task":task,"id":"#"+id})
-        console.log(ticketArr);
+        ticketArr.push({"color":ticketColor,"task":task,"id":id})
+        updateLocalStorage();
     }
+}
+
+
+
+function getTicketIdx(id){
+    for(let i=0;i<ticketArr.length;i++){
+        if(ticketArr[i].id==id){
+            return i;
+        }
+    }
+}
+
+
+function updateLocalStorage(){
+    let stringifyArr = JSON.stringify(ticketArr);
+    localStorage.setItem("tickets",stringifyArr);
 }
