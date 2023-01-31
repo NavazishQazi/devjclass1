@@ -16,3 +16,6 @@ function f(x,y){
 console.log(f(5,6));
 console.log(f(5)(5));
 
+
+// interview question
+
